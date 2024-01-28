@@ -1,0 +1,29 @@
+/* app-header.component.scss */
+
+
+@import '_variables'; 
+
+.header {
+    position: fixed;
+    width: 100vw;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 100px;
+    max-height: 140px;
+    padding: 20px 3.33vw;
+    box-sizing: border-box;
+
+    &__logo {
+        width: 12vw;
+        max-width: 100px;
+        fill: #ffffff;
+      }
+    
+      &__title {
+        text-align: right;
+      }
+  }
