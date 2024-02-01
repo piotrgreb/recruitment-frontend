@@ -4,6 +4,7 @@ import { CommonModule } from "@angular/common";
 import { TextsListService } from "../services/texts-list.service";
 import { TextContent } from "../services/textContent";
 import { AppLocalStorageComponent } from "../app-local-storage/app-local-storage.component";
+import { AppStateService } from "../services/state.service";
 @Component({
   selector: "app-main",
   standalone: true,
@@ -49,8 +50,12 @@ import { AppLocalStorageComponent } from "../app-local-storage/app-local-storage
           </p>
         </div>
       </div>
+      <div class="main__storage">
+      <app-app-local-storage />
+      </div>
     </div>
-    <app-app-local-storage />
+    
+
   `,
   styleUrls: ["./app-main.component.scss"],
 })
@@ -58,13 +63,30 @@ export class AppMainComponent implements OnInit {
   textContentList: TextContent[] = [];
   option: string = Option.Option1;
   previousIndex: number = 1;
-  listLength: number = this.textList["textList"].length;
-  constructor(private textList: TextsListService) {}
+  listLength: number = this.textList['textList'].length;
+
+  constructor(private textList: TextsListService, private stateService: AppStateService) {}
 
   ngOnInit(): void {
-    this.option = Option.Option1;
-    
+    this.restoreInitialState();
+    this.stateService.restoreClick.subscribe(() => {
+      this.restoreInitialState();
+
+    });
   }
+
+  private restoreInitialState(): void {
+    const storedState = this.stateService.getInitialState();
+
+    if (storedState) {
+      this.option = storedState.option || Option.Option1; 
+      this.textContentList = storedState.textContentList || [];
+    } else {
+      this.option = Option.Option1;
+      this.textContentList = [];
+    }
+  }
+
   get sortedTextContentList() {
     return this.textContentList.slice().sort((a, b) => a.text.localeCompare(b.text));
   }

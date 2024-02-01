@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
 import { SharedService } from '../services/shared.service';
 import { Subscription } from 'rxjs';
-
+import { AppStateService } from '../services/state.service';
 
 @Component({
   selector: "app-header",
@@ -55,11 +55,18 @@ export class AppHeaderComponent implements OnDestroy {
   isClassAdded: boolean = false;
   private subscription: Subscription;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,     private stateService: AppStateService
+    ) {
+
     this.subscription = this.sharedService.classAdded$.subscribe(() => {
       this.isClassAdded = true;
     });
-  }
+    this.stateService.restoreClick.subscribe(() => {
+      this.isClassAdded = false;
+    });
+  } 
+
+
 
   ngOnDestroy() {
     this.subscription.unsubscribe();

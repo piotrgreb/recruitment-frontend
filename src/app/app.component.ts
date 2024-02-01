@@ -22,6 +22,5 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
   styles: [],
 })
 export class AppComponent {
-  title = 'recruitment-frontend';
 
 }
