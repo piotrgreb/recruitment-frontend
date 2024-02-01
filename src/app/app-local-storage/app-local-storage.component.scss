@@ -1,0 +1,47 @@
+.storage {
+  width: 100%;
+  &__item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    textarea {
+      width: 100%;
+
+      font-family: "Open Sans", sans-serif;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      padding: 10px;
+      margin-block: 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-radius: 5px;
+      height: 5.5rem;
+    }
+   
+  }
+  button {
+    background: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+    margin-left: 10px;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border-radius: 5px;
+    &:hover {
+        background: linear-gradient(to right, #cd7401, #ff9d24);
+      }
+    }
+    &__btn{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        button{
+            width: 20vw;
+        }
+    }
+}

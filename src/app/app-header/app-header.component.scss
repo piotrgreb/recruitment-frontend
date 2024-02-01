@@ -1,0 +1,55 @@
+/* app-header.component.scss */
+@import '_variables'; 
+.header {
+    $self: &;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 6.25rem;
+    padding: 20px 3.33vw;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    z-index: 10;
+    &__logo-wraper{
+      background: #2b2d36;
+      display: block;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 100%;
+      position: relative;
+      transition: 0.3s ease; 
+      #{$self}__logo {
+        height: 3.5rem;
+        margin-top: 0.2rem;
+        fill: #ffffff;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      
+      }
+      &:hover {
+        background: linear-gradient(to right, #cd7401, #ff9d24);
+      }
+    }
+    #{$self}__title, #{$self}__name{
+      text-align: right;
+      
+    }
+    #{$self}__name{
+      visibility: hidden;
+      height: 0; 
+    }
+    .show-name{
+      visibility: visible;
+      height: 100%; 
+    }
+  }
+

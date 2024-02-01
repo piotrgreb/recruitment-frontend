@@ -1,0 +1,102 @@
+@import '_variables';
+
+.main {
+  $self: &;
+  margin-top: 6.05rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem;
+  min-height: calc(100vh - 3 * 6.05rem);
+  &__h1 {
+    font-size: 1.875rem;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    &::after {
+      content: "";
+      display: block;
+      width: 75%;
+      border-bottom: 2px solid #fff;
+      position: absolute;
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+    #{$self}__block {
+      flex: 1;
+      color: #a3a8b7;
+      h2 {
+        text-transform: uppercase;
+        font-size: 1rem;
+        color: #fff;
+        text-transform: uppercase;
+      }
+      #{$self}__radio {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+      #{$self}__buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        margin-block: 10px;
+
+        #{$self}__button {
+          background: transparent;
+          border: 2px solid #fff;
+          color: #a3a8b7;
+          width: 25vw;
+          padding-block: 10px;
+          margin-block: 5px;
+          cursor: pointer;
+          transition: 0.3s ease;
+          border-radius: 5px;
+          text-transform: uppercase;
+          transition: .3s ease;
+          font-weight: bold;
+          &:hover {
+            background: linear-gradient(to right, #cd7401, #ff9d24);
+            color:#fff;
+            transition: .3s ease;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        text-align: right;
+        @media screen and (min-width: $breakpoint-md) {
+          text-align: center;
+          #{$self}__buttons{
+            align-items:center
+          }
+        }
+      }
+      &:nth-child(3) {
+        flex: 1 100%;
+        text-align: center;
+        width: calc(100vw / 3);
+        @media screen and (min-width: $breakpoint-md) {
+          flex: 1;
+        }
+       
+        h2 {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+  &__storage{
+    width: 100%;
+  }
+}
