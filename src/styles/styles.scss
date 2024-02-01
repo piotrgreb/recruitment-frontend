@@ -2,13 +2,15 @@
 @import '_variables';
  
  html {
-  //  line-height: 1.15;
   width: 100%;
-  //font-family:
+  
   body {
     margin: 0;
     max-width: 100%;
     overflow-x: hidden;
     box-sizing: border-box;
+    background-color: #2b2d36;
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
   }
 }

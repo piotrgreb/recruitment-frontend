@@ -1,0 +1,135 @@
+.footer {
+  $self: &;
+  width: 100vw;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 8.75rem;
+  padding: 20px 3.33vw;
+  box-sizing: border-box;
+  font-size: 1.2rem;
+  font-weight: 300;
+  
+  &__logo {
+    position: relative;
+    line-height: 1.25rem;
+    #{$self}__logo-back {
+      background: #fff;
+      text-transform: uppercase;
+      width: 3.75rem;
+      height: 3.75rem;
+      padding-left: 0.3rem;
+      transition: 0.3s ease;
+      display: inline-block;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        border: 2px solid transparent;
+        width: calc(3.75rem - 1px);
+        height: calc(3.75rem - 6px);
+        background-color: #000;
+      }
+      &:hover {
+        background: linear-gradient(to right, #cd7401, #ff9d24);
+        animation: rotateAnimation 2s linear infinite;
+        display: inline-block;
+      }
+    }
+    #{$self}__logo-text {
+      position: absolute;
+      font-size: 1rem;
+      top: 0;
+      margin: 0rem;
+      cursor: pointer;
+    }
+    &:hover #{$self}__logo-back {
+      background: linear-gradient(to right, #cd7401, #ff9d24);
+      animation: rotateAnimation 2s linear infinite;
+      display: inline-block;
+    }
+  }
+
+  &__name {
+    position: relative;
+    padding: 0 10px;
+    text-align: center;
+    font-size: 1.2rem;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 50%;
+      height: 1px;
+      background-color: #fff;
+    }
+
+    &::before {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    &::after {
+      right: 0;
+      transform: translateX(100%);
+    }
+  }
+  &__show {
+    #{$self}--show {
+      display: block;
+      background: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+      padding-block: 10px;
+      margin-block: 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      border-radius: 5px;
+      font-size: 1rem;
+      width: 20vw;
+     text-align: center;
+     span{
+      display: inline-block;
+      transform: rotate(90deg);
+      
+      }
+        &:hover {
+          background: linear-gradient(to right, #cd7401, #ff9d24);
+        }
+      
+    
+    }
+    
+    #toggleClassCheckbox {
+      display: none;
+    }
+    
+    #toggleClassCheckbox:checked + label + &--select  {
+      bottom: 150px;
+      z-index: 1;
+      transition: bottom 0.3s ease; 
+      transition-delay: z-index 0.3s; 
+
+    }
+    
+    &--select {
+      position: absolute;
+      z-index: -1;
+      bottom: 1rem;
+      transition: bottom 0.3s ease; 
+
+    }
+  }
+}
+
+@keyframes rotateAnimation {
+  to {
+    transform: rotate(360deg);
+  }
+}

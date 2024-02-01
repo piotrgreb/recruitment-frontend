@@ -1,4 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from '@angular/core';
+import { SharedService } from '../services/shared.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: "app-header",
@@ -6,7 +9,7 @@ import { Component } from "@angular/core";
   imports: [],
   template: `
     <header class="header">
-      <a href="/">
+      <a class="header__logo-wraper" href="/">
       <svg
         version="1.1"
         id="logo"
@@ -40,9 +43,25 @@ import { Component } from "@angular/core";
         </g>
       </svg>
     </a>
+    <div class="header__right">
       <div class="header__title">Zadanie <strong>rekrutacyjne</strong></div>
+      <div class="header__name" [class.show-name]="isClassAdded">Piotr Grębowski</div>
+    </div>
     </header>
   `,
  styleUrls: ['./app-header.component.scss']
 })
-export class AppHeaderComponent {}
+export class AppHeaderComponent implements OnDestroy {
+  isClassAdded: boolean = false;
+  private subscription: Subscription;
+
+  constructor(private sharedService: SharedService) {
+    this.subscription = this.sharedService.classAdded$.subscribe(() => {
+      this.isClassAdded = true;
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+}
